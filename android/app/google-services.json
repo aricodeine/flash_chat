@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "898932106354",
+    "project_id": "flash-chat-b6e50",
+    "storage_bucket": "flash-chat-b6e50.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:898932106354:android:bafbbba30ad32e18e94eeb",
+        "android_client_info": {
+          "package_name": "com.ArihantTonage.flash_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "898932106354-br57q4ehq8ohvdojhg4dmlnipfde9fs2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfkxcNQui9PDmhHSlNfnKFQ-hnV2upLNs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "898932106354-br57q4ehq8ohvdojhg4dmlnipfde9fs2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
