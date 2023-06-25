@@ -1,4 +1,5 @@
 import 'package:flash_chat/screens/chat_screen.dart';
+import 'package:flash_chat/wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:flash_chat/components/rounded_button.dart';
 import 'package:flash_chat/constants.dart';
@@ -11,7 +12,7 @@ class LoginScreen extends StatefulWidget {
   static const id = 'login_screen';
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
@@ -27,7 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
       body: ModalProgressHUD(
         inAsyncCall: showSpinner,
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24.0),
+          padding: const EdgeInsets.symmetric(horizontal: 24.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -41,7 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 48.0,
               ),
               TextField(
@@ -54,7 +55,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   hintText: 'Enter an email',
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 8.0,
               ),
               TextField(
@@ -68,7 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   hintText: 'Enter password',
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 24.0,
               ),
               RoundedButton(
@@ -78,10 +79,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     showSpinner = true;
                   });
                   try {
-                    final user = await _auth.signInWithEmailAndPassword(
-                        email: email, password: password);
+                    final user =
+                        await _auth.signInWithEmailAndPassword(email: email, password: password);
                     if (user != null) {
-                      Navigator.pushNamed(context, ChatScreen.id);
+                      Navigator.pushNamedAndRemoveUntil(context, Wrapper.id, (route) => false);
                     }
                   } catch (e) {
                     print(e);

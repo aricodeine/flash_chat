@@ -1,16 +1,16 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flash_chat/components/rounded_button.dart';
 import 'package:flash_chat/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'chat_screen.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+
+import '../wrapper.dart';
 
 class RegistrationScreen extends StatefulWidget {
   static const id = 'registration_screen';
-  RegistrationScreen({Key? key}) : super(key: key);
+  const RegistrationScreen({Key? key}) : super(key: key);
   @override
-  _RegistrationScreenState createState() => _RegistrationScreenState();
+  State<RegistrationScreen> createState() => _RegistrationScreenState();
 }
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
@@ -25,7 +25,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       body: ModalProgressHUD(
         inAsyncCall: showSpinner,
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24.0),
+          padding: const EdgeInsets.symmetric(horizontal: 24.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -39,7 +39,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 48.0,
               ),
               TextField(
@@ -52,7 +52,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   hintText: 'Enter an email',
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 8.0,
               ),
               TextField(
@@ -66,7 +66,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   hintText: 'Enter password',
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 24.0,
               ),
               RoundedButton(
@@ -79,11 +79,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     final newUser = await _auth.createUserWithEmailAndPassword(
                         email: email, password: password);
                     if (newUser != null) {
-                      Navigator.pushNamed(context, ChatScreen.id);
+                      Navigator.pushNamedAndRemoveUntil(context, Wrapper.id, (route) => false);
                     }
-                    setState(() {
-                      showSpinner = false;
-                    });
+                    // setState(() {
+                    // showSpinner = false;
+                    // });
                   } catch (e) {
                     print(e);
                   }
